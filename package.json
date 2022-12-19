@@ -4,6 +4,7 @@
   "description": "The Advanced General-Purpose Markup Language",
   "main": "src/index.ts",
   "scripts": {
+    "dev": "ts-node src",
     "test": "jest"
   },
   "repository": {
