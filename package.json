@@ -1,0 +1,35 @@
+{
+  "name": "agpml-compilation-engine",
+  "version": "1.0.0",
+  "description": "The Advanced General-Purpose Markup Language",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brennon-Oliveira/AGPML-Compilation-Engine.git"
+  },
+  "keywords": [
+    "AGPML",
+    "Advanced",
+    "General-Purpose",
+    "Markup",
+    "Language",
+    "AGPML",
+    "Compilation",
+    "Engine",
+    "Advanced",
+    "General-Purpose",
+    "Markup",
+    "Language",
+    "Compilation",
+    "Engine"
+  ],
+  "author": "Brennon Gabriel de Oliveira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Brennon-Oliveira/AGPML-Compilation-Engine/issues"
+  },
+  "homepage": "https://github.com/Brennon-Oliveira/AGPML-Compilation-Engine#readme"
+}
