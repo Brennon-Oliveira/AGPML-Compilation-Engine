@@ -4,7 +4,7 @@
   "description": "The Advanced General-Purpose Markup Language",
   "main": "src/index.ts",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/Brennon-Oliveira/AGPML-Compilation-Engine/issues"
   },
-  "homepage": "https://github.com/Brennon-Oliveira/AGPML-Compilation-Engine#readme"
+  "homepage": "https://github.com/Brennon-Oliveira/AGPML-Compilation-Engine#readme",
+  "devDependencies": {
+    "@types/jest": "^29.2.4"
+  }
 }
