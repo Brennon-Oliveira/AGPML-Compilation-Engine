@@ -1,0 +1,12 @@
+#[1] title 1
+#[2] title 2
+#[3] title 3
+#[4] title 4
+#[5] title 5
+#[6] title 6
+-
+#[1]{color:#ff0000} colorized title 1
+#[2]{
+    color:#00ff00,
+    backgroundColor: #0000ff
+} colorized and background color title
