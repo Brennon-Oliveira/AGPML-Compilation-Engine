@@ -1,6 +1,6 @@
-export const separeHeaderAndBody = (content: string): string =>{
+export const separeHeaderAndBody = (content: string): [string, string] | Error =>{
     
     
 
-    return "";
+    throw new Error("Erro");
 }
