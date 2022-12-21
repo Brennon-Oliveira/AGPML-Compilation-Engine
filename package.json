@@ -4,7 +4,7 @@
   "description": "The Advanced General-Purpose Markup Language",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "ts-node src",
+    "dev": "nodemon --watch src/ --exec 'ts-node src/index.ts' -e ts",
     "test": "jest"
   },
   "repository": {
@@ -29,14 +29,14 @@
   ],
   "author": "Brennon Gabriel de Oliveira",
   "license": "MIT",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/Brennon-Oliveira/AGPML-Compilation-Engine/issues"
   },
   "homepage": "https://github.com/Brennon-Oliveira/AGPML-Compilation-Engine#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.20.2",
-    "@types/jest": "^29.2.4"
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.17"
   },
   "dependencies": {
     "babel-jest": "^29.3.1",
