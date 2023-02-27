@@ -6,4 +6,8 @@ class AgpmlToHtml {
         AgpmlToHtml();
 
         void convertFile(char* file_path);
+        
+        std::string firstStepInLine(std::string);
+
+
 };
