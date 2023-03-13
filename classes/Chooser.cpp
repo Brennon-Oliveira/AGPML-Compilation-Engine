@@ -1,9 +1,9 @@
 #include "../includes/Chooser.h"
 #include "../includes/AgpmlToHtml.h"
-#include <string>
 #include <fstream>
 #include <iostream>
 #include <regex>
+#include <string>
 #include <new>
 
 Chooser::Chooser(){}
