@@ -1,6 +1,6 @@
 .header
 
-inlineCss = true;
+inlineCss = true
 
 .vars
 
@@ -41,5 +41,5 @@ New paragraph.
 
 -
 
-" Quote
-" Rest of the Quote
+> Quote
+> Rest of the Quote
