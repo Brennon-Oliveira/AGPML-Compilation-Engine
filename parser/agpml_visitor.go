@@ -14,8 +14,14 @@ type AgpmlVisitor interface {
 	// Visit a parse tree produced by AgpmlParser#headerConfigs.
 	VisitHeaderConfigs(ctx *HeaderConfigsContext) interface{}
 
+	// Visit a parse tree produced by AgpmlParser#headerConfig.
+	VisitHeaderConfig(ctx *HeaderConfigContext) interface{}
+
 	// Visit a parse tree produced by AgpmlParser#varConfigs.
 	VisitVarConfigs(ctx *VarConfigsContext) interface{}
+
+	// Visit a parse tree produced by AgpmlParser#varConfig.
+	VisitVarConfig(ctx *VarConfigContext) interface{}
 
 	// Visit a parse tree produced by AgpmlParser#dataConfigs.
 	VisitDataConfigs(ctx *DataConfigsContext) interface{}

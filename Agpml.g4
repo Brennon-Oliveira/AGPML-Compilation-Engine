@@ -2,6 +2,10 @@ grammar Agpml;
 
 // Lexer rules
 
+BOOLEAN
+    : 'true' | 'false'
+    ;
+
 TEXT_CONTENT
 	:	';' ( ESC_SEQ | ~(';'|'\\'|'\n') )* ('\n' | EOF | ';')
      	;
@@ -104,15 +108,23 @@ program
     ;
 
 headerConfigs
-    : '1'
+    : headerConfig+
+    ;
+
+headerConfig
+    : ATTRIBUTE ATRIBUTION (BOOLEAN | STRING | NUMBER | COLOR)
     ;
 
 varConfigs
-    : '2'
+    : varConfig+
+    ;
+
+varConfig
+    : VARIABLE ATRIBUTION (BOOLEAN | STRING | NUMBER | COLOR | VARIABLE)
     ;
 
 dataConfigs
-    : '3'
+    :
     ;
 
 style

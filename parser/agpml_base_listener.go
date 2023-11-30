@@ -33,11 +33,23 @@ func (s *BaseAgpmlListener) EnterHeaderConfigs(ctx *HeaderConfigsContext) {}
 // ExitHeaderConfigs is called when production headerConfigs is exited.
 func (s *BaseAgpmlListener) ExitHeaderConfigs(ctx *HeaderConfigsContext) {}
 
+// EnterHeaderConfig is called when production headerConfig is entered.
+func (s *BaseAgpmlListener) EnterHeaderConfig(ctx *HeaderConfigContext) {}
+
+// ExitHeaderConfig is called when production headerConfig is exited.
+func (s *BaseAgpmlListener) ExitHeaderConfig(ctx *HeaderConfigContext) {}
+
 // EnterVarConfigs is called when production varConfigs is entered.
 func (s *BaseAgpmlListener) EnterVarConfigs(ctx *VarConfigsContext) {}
 
 // ExitVarConfigs is called when production varConfigs is exited.
 func (s *BaseAgpmlListener) ExitVarConfigs(ctx *VarConfigsContext) {}
+
+// EnterVarConfig is called when production varConfig is entered.
+func (s *BaseAgpmlListener) EnterVarConfig(ctx *VarConfigContext) {}
+
+// ExitVarConfig is called when production varConfig is exited.
+func (s *BaseAgpmlListener) ExitVarConfig(ctx *VarConfigContext) {}
 
 // EnterDataConfigs is called when production dataConfigs is entered.
 func (s *BaseAgpmlListener) EnterDataConfigs(ctx *DataConfigsContext) {}

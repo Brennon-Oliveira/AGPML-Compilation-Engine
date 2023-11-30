@@ -16,7 +16,15 @@ func (v *BaseAgpmlVisitor) VisitHeaderConfigs(ctx *HeaderConfigsContext) interfa
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseAgpmlVisitor) VisitHeaderConfig(ctx *HeaderConfigContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseAgpmlVisitor) VisitVarConfigs(ctx *VarConfigsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseAgpmlVisitor) VisitVarConfig(ctx *VarConfigContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

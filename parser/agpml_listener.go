@@ -14,8 +14,14 @@ type AgpmlListener interface {
 	// EnterHeaderConfigs is called when entering the headerConfigs production.
 	EnterHeaderConfigs(c *HeaderConfigsContext)
 
+	// EnterHeaderConfig is called when entering the headerConfig production.
+	EnterHeaderConfig(c *HeaderConfigContext)
+
 	// EnterVarConfigs is called when entering the varConfigs production.
 	EnterVarConfigs(c *VarConfigsContext)
+
+	// EnterVarConfig is called when entering the varConfig production.
+	EnterVarConfig(c *VarConfigContext)
 
 	// EnterDataConfigs is called when entering the dataConfigs production.
 	EnterDataConfigs(c *DataConfigsContext)
@@ -32,8 +38,14 @@ type AgpmlListener interface {
 	// ExitHeaderConfigs is called when exiting the headerConfigs production.
 	ExitHeaderConfigs(c *HeaderConfigsContext)
 
+	// ExitHeaderConfig is called when exiting the headerConfig production.
+	ExitHeaderConfig(c *HeaderConfigContext)
+
 	// ExitVarConfigs is called when exiting the varConfigs production.
 	ExitVarConfigs(c *VarConfigsContext)
+
+	// ExitVarConfig is called when exiting the varConfig production.
+	ExitVarConfig(c *VarConfigContext)
 
 	// ExitDataConfigs is called when exiting the dataConfigs production.
 	ExitDataConfigs(c *DataConfigsContext)

@@ -33,38 +33,48 @@ var AgpmlParserStaticData struct {
 func agpmlParserInit() {
 	staticData := &AgpmlParserStaticData
 	staticData.LiteralNames = []string{
-		"", "'.header'", "'.vars'", "'.body'", "'1'", "'2'", "'3'", "", "",
-		"", "", "", "'*'", "'>'", "", "", "'='", "':'", "','", "", "", "", "",
-		"", "'{'", "'}'",
+		"", "'.header'", "'.vars'", "'.body'", "'3'", "'1'", "", "", "", "",
+		"", "", "'*'", "'>'", "", "", "'='", "':'", "','", "", "", "", "", "",
+		"'{'", "'}'", "", "'..'", "", "'##'",
 	}
 	staticData.SymbolicNames = []string{
-		"", "", "", "", "", "", "", "TEXT_CONTENT", "STRING", "DIVIDER", "FLAG_TITLE",
-		"FLAG_OLIST", "FLAG_ULIST", "FLAG_QUOTE", "ATTRIBUTE", "VARIABLE", "ATRIBUTION",
-		"DEFINER", "SEPARATOR", "COLOR", "NUMBER", "DIGIT", "COMMENT", "WS",
-		"OPEN_CURLY_BRACKET", "CLOSE_CURLY_BRACKET",
+		"", "", "", "", "", "", "BOOLEAN", "TEXT_CONTENT", "STRING", "DIVIDER",
+		"FLAG_TITLE", "FLAG_OLIST", "FLAG_ULIST", "FLAG_QUOTE", "ATTRIBUTE",
+		"VARIABLE", "ATRIBUTION", "DEFINER", "SEPARATOR", "COLOR", "NUMBER",
+		"DIGIT", "COMMENT", "WS", "OPEN_CURLY_BRACKET", "CLOSE_CURLY_BRACKET",
+		"OPEN_CLASS", "CLOSE_CLASS", "OPEN_ID", "CLOSE_ID",
 	}
 	staticData.RuleNames = []string{
-		"program", "headerConfigs", "varConfigs", "dataConfigs", "style", "styleConfig",
+		"program", "headerConfigs", "headerConfig", "varConfigs", "varConfig",
+		"dataConfigs", "style", "styleConfig",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 25, 43, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
-		4, 2, 5, 7, 5, 1, 0, 1, 0, 3, 0, 15, 8, 0, 1, 0, 1, 0, 3, 0, 19, 8, 0,
-		3, 0, 21, 8, 0, 1, 0, 1, 0, 3, 0, 25, 8, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1,
-		2, 1, 2, 1, 3, 1, 3, 1, 4, 1, 4, 3, 4, 37, 8, 4, 1, 4, 1, 4, 1, 5, 1, 5,
-		1, 5, 0, 0, 6, 0, 2, 4, 6, 8, 10, 0, 0, 41, 0, 12, 1, 0, 0, 0, 2, 28, 1,
-		0, 0, 0, 4, 30, 1, 0, 0, 0, 6, 32, 1, 0, 0, 0, 8, 34, 1, 0, 0, 0, 10, 40,
-		1, 0, 0, 0, 12, 14, 5, 1, 0, 0, 13, 15, 3, 2, 1, 0, 14, 13, 1, 0, 0, 0,
-		14, 15, 1, 0, 0, 0, 15, 20, 1, 0, 0, 0, 16, 18, 5, 2, 0, 0, 17, 19, 3,
-		4, 2, 0, 18, 17, 1, 0, 0, 0, 18, 19, 1, 0, 0, 0, 19, 21, 1, 0, 0, 0, 20,
-		16, 1, 0, 0, 0, 20, 21, 1, 0, 0, 0, 21, 22, 1, 0, 0, 0, 22, 24, 5, 3, 0,
-		0, 23, 25, 3, 6, 3, 0, 24, 23, 1, 0, 0, 0, 24, 25, 1, 0, 0, 0, 25, 26,
-		1, 0, 0, 0, 26, 27, 5, 0, 0, 1, 27, 1, 1, 0, 0, 0, 28, 29, 5, 4, 0, 0,
-		29, 3, 1, 0, 0, 0, 30, 31, 5, 5, 0, 0, 31, 5, 1, 0, 0, 0, 32, 33, 5, 6,
-		0, 0, 33, 7, 1, 0, 0, 0, 34, 36, 5, 24, 0, 0, 35, 37, 3, 10, 5, 0, 36,
-		35, 1, 0, 0, 0, 36, 37, 1, 0, 0, 0, 37, 38, 1, 0, 0, 0, 38, 39, 5, 25,
-		0, 0, 39, 9, 1, 0, 0, 0, 40, 41, 5, 4, 0, 0, 41, 11, 1, 0, 0, 0, 5, 14,
-		18, 20, 24, 36,
+		4, 1, 29, 61, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 1, 0, 1, 0, 3, 0, 19, 8, 0, 1, 0,
+		1, 0, 3, 0, 23, 8, 0, 3, 0, 25, 8, 0, 1, 0, 1, 0, 3, 0, 29, 8, 0, 1, 0,
+		1, 0, 1, 1, 4, 1, 34, 8, 1, 11, 1, 12, 1, 35, 1, 2, 1, 2, 1, 2, 1, 2, 1,
+		3, 4, 3, 43, 8, 3, 11, 3, 12, 3, 44, 1, 4, 1, 4, 1, 4, 1, 4, 1, 5, 1, 5,
+		1, 6, 1, 6, 3, 6, 55, 8, 6, 1, 6, 1, 6, 1, 7, 1, 7, 1, 7, 0, 0, 8, 0, 2,
+		4, 6, 8, 10, 12, 14, 0, 2, 3, 0, 6, 6, 8, 8, 19, 20, 4, 0, 6, 6, 8, 8,
+		15, 15, 19, 20, 59, 0, 16, 1, 0, 0, 0, 2, 33, 1, 0, 0, 0, 4, 37, 1, 0,
+		0, 0, 6, 42, 1, 0, 0, 0, 8, 46, 1, 0, 0, 0, 10, 50, 1, 0, 0, 0, 12, 52,
+		1, 0, 0, 0, 14, 58, 1, 0, 0, 0, 16, 18, 5, 1, 0, 0, 17, 19, 3, 2, 1, 0,
+		18, 17, 1, 0, 0, 0, 18, 19, 1, 0, 0, 0, 19, 24, 1, 0, 0, 0, 20, 22, 5,
+		2, 0, 0, 21, 23, 3, 6, 3, 0, 22, 21, 1, 0, 0, 0, 22, 23, 1, 0, 0, 0, 23,
+		25, 1, 0, 0, 0, 24, 20, 1, 0, 0, 0, 24, 25, 1, 0, 0, 0, 25, 26, 1, 0, 0,
+		0, 26, 28, 5, 3, 0, 0, 27, 29, 3, 10, 5, 0, 28, 27, 1, 0, 0, 0, 28, 29,
+		1, 0, 0, 0, 29, 30, 1, 0, 0, 0, 30, 31, 5, 0, 0, 1, 31, 1, 1, 0, 0, 0,
+		32, 34, 3, 4, 2, 0, 33, 32, 1, 0, 0, 0, 34, 35, 1, 0, 0, 0, 35, 33, 1,
+		0, 0, 0, 35, 36, 1, 0, 0, 0, 36, 3, 1, 0, 0, 0, 37, 38, 5, 14, 0, 0, 38,
+		39, 5, 16, 0, 0, 39, 40, 7, 0, 0, 0, 40, 5, 1, 0, 0, 0, 41, 43, 3, 8, 4,
+		0, 42, 41, 1, 0, 0, 0, 43, 44, 1, 0, 0, 0, 44, 42, 1, 0, 0, 0, 44, 45,
+		1, 0, 0, 0, 45, 7, 1, 0, 0, 0, 46, 47, 5, 15, 0, 0, 47, 48, 5, 16, 0, 0,
+		48, 49, 7, 1, 0, 0, 49, 9, 1, 0, 0, 0, 50, 51, 5, 4, 0, 0, 51, 11, 1, 0,
+		0, 0, 52, 54, 5, 24, 0, 0, 53, 55, 3, 14, 7, 0, 54, 53, 1, 0, 0, 0, 54,
+		55, 1, 0, 0, 0, 55, 56, 1, 0, 0, 0, 56, 57, 5, 25, 0, 0, 57, 13, 1, 0,
+		0, 0, 58, 59, 5, 5, 0, 0, 59, 15, 1, 0, 0, 0, 7, 18, 22, 24, 28, 35, 44,
+		54,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -108,7 +118,7 @@ const (
 	AgpmlParserT__2                = 3
 	AgpmlParserT__3                = 4
 	AgpmlParserT__4                = 5
-	AgpmlParserT__5                = 6
+	AgpmlParserBOOLEAN             = 6
 	AgpmlParserTEXT_CONTENT        = 7
 	AgpmlParserSTRING              = 8
 	AgpmlParserDIVIDER             = 9
@@ -128,16 +138,22 @@ const (
 	AgpmlParserWS                  = 23
 	AgpmlParserOPEN_CURLY_BRACKET  = 24
 	AgpmlParserCLOSE_CURLY_BRACKET = 25
+	AgpmlParserOPEN_CLASS          = 26
+	AgpmlParserCLOSE_CLASS         = 27
+	AgpmlParserOPEN_ID             = 28
+	AgpmlParserCLOSE_ID            = 29
 )
 
 // AgpmlParser rules.
 const (
 	AgpmlParserRULE_program       = 0
 	AgpmlParserRULE_headerConfigs = 1
-	AgpmlParserRULE_varConfigs    = 2
-	AgpmlParserRULE_dataConfigs   = 3
-	AgpmlParserRULE_style         = 4
-	AgpmlParserRULE_styleConfig   = 5
+	AgpmlParserRULE_headerConfig  = 2
+	AgpmlParserRULE_varConfigs    = 3
+	AgpmlParserRULE_varConfig     = 4
+	AgpmlParserRULE_dataConfigs   = 5
+	AgpmlParserRULE_style         = 6
+	AgpmlParserRULE_styleConfig   = 7
 )
 
 // IProgramContext is an interface to support dynamic dispatch.
@@ -278,66 +294,26 @@ func (p *AgpmlParser) Program() (localctx IProgramContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(12)
+		p.SetState(16)
 		p.Match(AgpmlParserT__0)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(14)
+	p.SetState(18)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == AgpmlParserT__3 {
+	if _la == AgpmlParserATTRIBUTE {
 		{
-			p.SetState(13)
+			p.SetState(17)
 			p.HeaderConfigs()
 		}
 
-	}
-	p.SetState(20)
-	p.GetErrorHandler().Sync(p)
-	if p.HasError() {
-		goto errorExit
-	}
-	_la = p.GetTokenStream().LA(1)
-
-	if _la == AgpmlParserT__1 {
-		{
-			p.SetState(16)
-			p.Match(AgpmlParserT__1)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		p.SetState(18)
-		p.GetErrorHandler().Sync(p)
-		if p.HasError() {
-			goto errorExit
-		}
-		_la = p.GetTokenStream().LA(1)
-
-		if _la == AgpmlParserT__4 {
-			{
-				p.SetState(17)
-				p.VarConfigs()
-			}
-
-		}
-
-	}
-	{
-		p.SetState(22)
-		p.Match(AgpmlParserT__2)
-		if p.HasError() {
-			// Recognition error - abort rule
-			goto errorExit
-		}
 	}
 	p.SetState(24)
 	p.GetErrorHandler().Sync(p)
@@ -346,15 +322,55 @@ func (p *AgpmlParser) Program() (localctx IProgramContext) {
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == AgpmlParserT__5 {
+	if _la == AgpmlParserT__1 {
 		{
-			p.SetState(23)
-			p.DataConfigs()
+			p.SetState(20)
+			p.Match(AgpmlParserT__1)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+		p.SetState(22)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
+		_la = p.GetTokenStream().LA(1)
+
+		if _la == AgpmlParserVARIABLE {
+			{
+				p.SetState(21)
+				p.VarConfigs()
+			}
+
 		}
 
 	}
 	{
 		p.SetState(26)
+		p.Match(AgpmlParserT__2)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	p.SetState(28)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+	_la = p.GetTokenStream().LA(1)
+
+	if _la == AgpmlParserT__3 {
+		{
+			p.SetState(27)
+			p.DataConfigs()
+		}
+
+	}
+	{
+		p.SetState(30)
 		p.Match(AgpmlParserEOF)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -381,6 +397,11 @@ type IHeaderConfigsContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	AllHeaderConfig() []IHeaderConfigContext
+	HeaderConfig(i int) IHeaderConfigContext
+
 	// IsHeaderConfigsContext differentiates from other interfaces.
 	IsHeaderConfigsContext()
 }
@@ -416,6 +437,48 @@ func NewHeaderConfigsContext(parser antlr.Parser, parent antlr.ParserRuleContext
 }
 
 func (s *HeaderConfigsContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *HeaderConfigsContext) AllHeaderConfig() []IHeaderConfigContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IHeaderConfigContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IHeaderConfigContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IHeaderConfigContext); ok {
+			tst[i] = t.(IHeaderConfigContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *HeaderConfigsContext) HeaderConfig(i int) IHeaderConfigContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IHeaderConfigContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IHeaderConfigContext)
+}
+
 func (s *HeaderConfigsContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -449,13 +512,179 @@ func (s *HeaderConfigsContext) Accept(visitor antlr.ParseTreeVisitor) interface{
 func (p *AgpmlParser) HeaderConfigs() (localctx IHeaderConfigsContext) {
 	localctx = NewHeaderConfigsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 2, AgpmlParserRULE_headerConfigs)
+	var _la int
+
+	p.EnterOuterAlt(localctx, 1)
+	p.SetState(33)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+	_la = p.GetTokenStream().LA(1)
+
+	for ok := true; ok; ok = _la == AgpmlParserATTRIBUTE {
+		{
+			p.SetState(32)
+			p.HeaderConfig()
+		}
+
+		p.SetState(35)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
+		_la = p.GetTokenStream().LA(1)
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IHeaderConfigContext is an interface to support dynamic dispatch.
+type IHeaderConfigContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	ATTRIBUTE() antlr.TerminalNode
+	ATRIBUTION() antlr.TerminalNode
+	BOOLEAN() antlr.TerminalNode
+	STRING() antlr.TerminalNode
+	NUMBER() antlr.TerminalNode
+	COLOR() antlr.TerminalNode
+
+	// IsHeaderConfigContext differentiates from other interfaces.
+	IsHeaderConfigContext()
+}
+
+type HeaderConfigContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyHeaderConfigContext() *HeaderConfigContext {
+	var p = new(HeaderConfigContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = AgpmlParserRULE_headerConfig
+	return p
+}
+
+func InitEmptyHeaderConfigContext(p *HeaderConfigContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = AgpmlParserRULE_headerConfig
+}
+
+func (*HeaderConfigContext) IsHeaderConfigContext() {}
+
+func NewHeaderConfigContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *HeaderConfigContext {
+	var p = new(HeaderConfigContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AgpmlParserRULE_headerConfig
+
+	return p
+}
+
+func (s *HeaderConfigContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *HeaderConfigContext) ATTRIBUTE() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserATTRIBUTE, 0)
+}
+
+func (s *HeaderConfigContext) ATRIBUTION() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserATRIBUTION, 0)
+}
+
+func (s *HeaderConfigContext) BOOLEAN() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserBOOLEAN, 0)
+}
+
+func (s *HeaderConfigContext) STRING() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserSTRING, 0)
+}
+
+func (s *HeaderConfigContext) NUMBER() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserNUMBER, 0)
+}
+
+func (s *HeaderConfigContext) COLOR() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserCOLOR, 0)
+}
+
+func (s *HeaderConfigContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *HeaderConfigContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *HeaderConfigContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AgpmlListener); ok {
+		listenerT.EnterHeaderConfig(s)
+	}
+}
+
+func (s *HeaderConfigContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AgpmlListener); ok {
+		listenerT.ExitHeaderConfig(s)
+	}
+}
+
+func (s *HeaderConfigContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case AgpmlVisitor:
+		return t.VisitHeaderConfig(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *AgpmlParser) HeaderConfig() (localctx IHeaderConfigContext) {
+	localctx = NewHeaderConfigContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 4, AgpmlParserRULE_headerConfig)
+	var _la int
+
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(28)
-		p.Match(AgpmlParserT__3)
+		p.SetState(37)
+		p.Match(AgpmlParserATTRIBUTE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
+		}
+	}
+	{
+		p.SetState(38)
+		p.Match(AgpmlParserATRIBUTION)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(39)
+		_la = p.GetTokenStream().LA(1)
+
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1573184) != 0) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
 		}
 	}
 
@@ -478,6 +707,11 @@ type IVarConfigsContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	AllVarConfig() []IVarConfigContext
+	VarConfig(i int) IVarConfigContext
+
 	// IsVarConfigsContext differentiates from other interfaces.
 	IsVarConfigsContext()
 }
@@ -513,6 +747,48 @@ func NewVarConfigsContext(parser antlr.Parser, parent antlr.ParserRuleContext, i
 }
 
 func (s *VarConfigsContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *VarConfigsContext) AllVarConfig() []IVarConfigContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IVarConfigContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IVarConfigContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IVarConfigContext); ok {
+			tst[i] = t.(IVarConfigContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *VarConfigsContext) VarConfig(i int) IVarConfigContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IVarConfigContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IVarConfigContext)
+}
+
 func (s *VarConfigsContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -545,14 +821,185 @@ func (s *VarConfigsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 
 func (p *AgpmlParser) VarConfigs() (localctx IVarConfigsContext) {
 	localctx = NewVarConfigsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, AgpmlParserRULE_varConfigs)
+	p.EnterRule(localctx, 6, AgpmlParserRULE_varConfigs)
+	var _la int
+
+	p.EnterOuterAlt(localctx, 1)
+	p.SetState(42)
+	p.GetErrorHandler().Sync(p)
+	if p.HasError() {
+		goto errorExit
+	}
+	_la = p.GetTokenStream().LA(1)
+
+	for ok := true; ok; ok = _la == AgpmlParserVARIABLE {
+		{
+			p.SetState(41)
+			p.VarConfig()
+		}
+
+		p.SetState(44)
+		p.GetErrorHandler().Sync(p)
+		if p.HasError() {
+			goto errorExit
+		}
+		_la = p.GetTokenStream().LA(1)
+	}
+
+errorExit:
+	if p.HasError() {
+		v := p.GetError()
+		localctx.SetException(v)
+		p.GetErrorHandler().ReportError(p, v)
+		p.GetErrorHandler().Recover(p, v)
+		p.SetError(nil)
+	}
+	p.ExitRule()
+	return localctx
+	goto errorExit // Trick to prevent compiler error if the label is not used
+}
+
+// IVarConfigContext is an interface to support dynamic dispatch.
+type IVarConfigContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	AllVARIABLE() []antlr.TerminalNode
+	VARIABLE(i int) antlr.TerminalNode
+	ATRIBUTION() antlr.TerminalNode
+	BOOLEAN() antlr.TerminalNode
+	STRING() antlr.TerminalNode
+	NUMBER() antlr.TerminalNode
+	COLOR() antlr.TerminalNode
+
+	// IsVarConfigContext differentiates from other interfaces.
+	IsVarConfigContext()
+}
+
+type VarConfigContext struct {
+	antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyVarConfigContext() *VarConfigContext {
+	var p = new(VarConfigContext)
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = AgpmlParserRULE_varConfig
+	return p
+}
+
+func InitEmptyVarConfigContext(p *VarConfigContext) {
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
+	p.RuleIndex = AgpmlParserRULE_varConfig
+}
+
+func (*VarConfigContext) IsVarConfigContext() {}
+
+func NewVarConfigContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *VarConfigContext {
+	var p = new(VarConfigContext)
+
+	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = AgpmlParserRULE_varConfig
+
+	return p
+}
+
+func (s *VarConfigContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *VarConfigContext) AllVARIABLE() []antlr.TerminalNode {
+	return s.GetTokens(AgpmlParserVARIABLE)
+}
+
+func (s *VarConfigContext) VARIABLE(i int) antlr.TerminalNode {
+	return s.GetToken(AgpmlParserVARIABLE, i)
+}
+
+func (s *VarConfigContext) ATRIBUTION() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserATRIBUTION, 0)
+}
+
+func (s *VarConfigContext) BOOLEAN() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserBOOLEAN, 0)
+}
+
+func (s *VarConfigContext) STRING() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserSTRING, 0)
+}
+
+func (s *VarConfigContext) NUMBER() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserNUMBER, 0)
+}
+
+func (s *VarConfigContext) COLOR() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserCOLOR, 0)
+}
+
+func (s *VarConfigContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *VarConfigContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *VarConfigContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AgpmlListener); ok {
+		listenerT.EnterVarConfig(s)
+	}
+}
+
+func (s *VarConfigContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(AgpmlListener); ok {
+		listenerT.ExitVarConfig(s)
+	}
+}
+
+func (s *VarConfigContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case AgpmlVisitor:
+		return t.VisitVarConfig(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *AgpmlParser) VarConfig() (localctx IVarConfigContext) {
+	localctx = NewVarConfigContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 8, AgpmlParserRULE_varConfig)
+	var _la int
+
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(30)
-		p.Match(AgpmlParserT__4)
+		p.SetState(46)
+		p.Match(AgpmlParserVARIABLE)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
+		}
+	}
+	{
+		p.SetState(47)
+		p.Match(AgpmlParserATRIBUTION)
+		if p.HasError() {
+			// Recognition error - abort rule
+			goto errorExit
+		}
+	}
+	{
+		p.SetState(48)
+		_la = p.GetTokenStream().LA(1)
+
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&1605952) != 0) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
 		}
 	}
 
@@ -642,11 +1089,11 @@ func (s *DataConfigsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} 
 
 func (p *AgpmlParser) DataConfigs() (localctx IDataConfigsContext) {
 	localctx = NewDataConfigsContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, AgpmlParserRULE_dataConfigs)
+	p.EnterRule(localctx, 10, AgpmlParserRULE_dataConfigs)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(32)
-		p.Match(AgpmlParserT__5)
+		p.SetState(50)
+		p.Match(AgpmlParserT__3)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -770,34 +1217,34 @@ func (s *StyleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
 
 func (p *AgpmlParser) Style() (localctx IStyleContext) {
 	localctx = NewStyleContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, AgpmlParserRULE_style)
+	p.EnterRule(localctx, 12, AgpmlParserRULE_style)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(34)
+		p.SetState(52)
 		p.Match(AgpmlParserOPEN_CURLY_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(36)
+	p.SetState(54)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == AgpmlParserT__3 {
+	if _la == AgpmlParserT__4 {
 		{
-			p.SetState(35)
+			p.SetState(53)
 			p.StyleConfig()
 		}
 
 	}
 	{
-		p.SetState(38)
+		p.SetState(56)
 		p.Match(AgpmlParserCLOSE_CURLY_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -891,11 +1338,11 @@ func (s *StyleConfigContext) Accept(visitor antlr.ParseTreeVisitor) interface{} 
 
 func (p *AgpmlParser) StyleConfig() (localctx IStyleConfigContext) {
 	localctx = NewStyleConfigContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, AgpmlParserRULE_styleConfig)
+	p.EnterRule(localctx, 14, AgpmlParserRULE_styleConfig)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(40)
-		p.Match(AgpmlParserT__3)
+		p.SetState(58)
+		p.Match(AgpmlParserT__4)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
