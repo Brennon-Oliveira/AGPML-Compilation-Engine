@@ -2,12 +2,16 @@ grammar Agpml;
 
 // Lexer rules
 
+TEXT_CONTENT
+	:	';' ( ESC_SEQ | ~(';'|'\\'|'\n') )* ('\n' | EOF | ';')
+     	;
+
 STRING
 	:	'"' ( ESC_SEQ | ~('"'|'\\') )* '"'
 	;
 
 DIVIDER
-    : '-'+ {p.GetInputStream().LA(1) == '\n'}?
+    : ([\-])+
     ;
 
 FLAG_TITLE
@@ -26,24 +30,29 @@ FLAG_QUOTE
     : '>'
     ;
 
+ATTRIBUTE
+    : [a-zA-Z] [a-zA-Z]*
+    ;
+
 VARIABLE
     : '$' ([a-zA-Z] | DIGIT)*
     ;
-
-TEXT
-    : ~(
-        '#' | '*' | '$' | '\n' | '\r' | '\t' | ' ' | '"' | '\\' | [1.] | '>'
-        ) ('\\$' | ~[$\r\n])+ {p.GetInputStream().LA(1) != '\n'}?
-    ;
-
 
 ATRIBUTION
     : '='
     ;
 
+DEFINER
+    : ':'
+    ;
+
+SEPARATOR
+    : ','
+    ;
+
 fragment
 ESC_SEQ
-	:	'\\"'
+	:	'\\"' | '\\;'
 	;
 
 COLOR
@@ -59,11 +68,34 @@ DIGIT
 COMMENT
     : '//' .*? '\n' -> skip
     ;
+
 WS
     : [ \t\r\n]+ -> skip
     ;
 
+OPEN_CURLY_BRACKET
+    : '{'
+    ;
 
+CLOSE_CURLY_BRACKET
+    : '}'
+    ;
+
+OPEN_CLASS
+    : '..' [a-zA-Z] [a-zA-Z0-9]*
+    ;
+
+CLOSE_CLASS
+    : '..'
+    ;
+
+OPEN_ID
+    : '##' [a-zA-Z] [a-zA-Z0-9]*
+    ;
+
+CLOSE_ID
+    : '##'
+    ;
 
 // Parser rules
 

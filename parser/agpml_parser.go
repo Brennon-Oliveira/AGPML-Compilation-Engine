@@ -33,20 +33,22 @@ var AgpmlParserStaticData struct {
 func agpmlParserInit() {
 	staticData := &AgpmlParserStaticData
 	staticData.LiteralNames = []string{
-		"", "'.header'", "'.vars'", "'.body'", "'1'", "'2'", "'3'", "'{'", "'}'",
-		"", "", "", "", "'*'", "'>'", "", "", "'='",
+		"", "'.header'", "'.vars'", "'.body'", "'1'", "'2'", "'3'", "", "",
+		"", "", "", "'*'", "'>'", "", "", "'='", "':'", "','", "", "", "", "",
+		"", "'{'", "'}'",
 	}
 	staticData.SymbolicNames = []string{
-		"", "", "", "", "", "", "", "", "", "STRING", "DIVIDER", "FLAG_TITLE",
-		"FLAG_OLIST", "FLAG_ULIST", "FLAG_QUOTE", "VARIABLE", "TEXT", "ATRIBUTION",
-		"COLOR", "NUMBER", "DIGIT", "COMMENT", "WS",
+		"", "", "", "", "", "", "", "TEXT_CONTENT", "STRING", "DIVIDER", "FLAG_TITLE",
+		"FLAG_OLIST", "FLAG_ULIST", "FLAG_QUOTE", "ATTRIBUTE", "VARIABLE", "ATRIBUTION",
+		"DEFINER", "SEPARATOR", "COLOR", "NUMBER", "DIGIT", "COMMENT", "WS",
+		"OPEN_CURLY_BRACKET", "CLOSE_CURLY_BRACKET",
 	}
 	staticData.RuleNames = []string{
 		"program", "headerConfigs", "varConfigs", "dataConfigs", "style", "styleConfig",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 22, 43, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 25, 43, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 1, 0, 1, 0, 3, 0, 15, 8, 0, 1, 0, 1, 0, 3, 0, 19, 8, 0,
 		3, 0, 21, 8, 0, 1, 0, 1, 0, 3, 0, 25, 8, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1,
 		2, 1, 2, 1, 3, 1, 3, 1, 4, 1, 4, 3, 4, 37, 8, 4, 1, 4, 1, 4, 1, 5, 1, 5,
@@ -59,10 +61,10 @@ func agpmlParserInit() {
 		0, 23, 25, 3, 6, 3, 0, 24, 23, 1, 0, 0, 0, 24, 25, 1, 0, 0, 0, 25, 26,
 		1, 0, 0, 0, 26, 27, 5, 0, 0, 1, 27, 1, 1, 0, 0, 0, 28, 29, 5, 4, 0, 0,
 		29, 3, 1, 0, 0, 0, 30, 31, 5, 5, 0, 0, 31, 5, 1, 0, 0, 0, 32, 33, 5, 6,
-		0, 0, 33, 7, 1, 0, 0, 0, 34, 36, 5, 7, 0, 0, 35, 37, 3, 10, 5, 0, 36, 35,
-		1, 0, 0, 0, 36, 37, 1, 0, 0, 0, 37, 38, 1, 0, 0, 0, 38, 39, 5, 8, 0, 0,
-		39, 9, 1, 0, 0, 0, 40, 41, 5, 4, 0, 0, 41, 11, 1, 0, 0, 0, 5, 14, 18, 20,
-		24, 36,
+		0, 0, 33, 7, 1, 0, 0, 0, 34, 36, 5, 24, 0, 0, 35, 37, 3, 10, 5, 0, 36,
+		35, 1, 0, 0, 0, 36, 37, 1, 0, 0, 0, 37, 38, 1, 0, 0, 0, 38, 39, 5, 25,
+		0, 0, 39, 9, 1, 0, 0, 0, 40, 41, 5, 4, 0, 0, 41, 11, 1, 0, 0, 0, 5, 14,
+		18, 20, 24, 36,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -100,29 +102,32 @@ func NewAgpmlParser(input antlr.TokenStream) *AgpmlParser {
 
 // AgpmlParser tokens.
 const (
-	AgpmlParserEOF        = antlr.TokenEOF
-	AgpmlParserT__0       = 1
-	AgpmlParserT__1       = 2
-	AgpmlParserT__2       = 3
-	AgpmlParserT__3       = 4
-	AgpmlParserT__4       = 5
-	AgpmlParserT__5       = 6
-	AgpmlParserT__6       = 7
-	AgpmlParserT__7       = 8
-	AgpmlParserSTRING     = 9
-	AgpmlParserDIVIDER    = 10
-	AgpmlParserFLAG_TITLE = 11
-	AgpmlParserFLAG_OLIST = 12
-	AgpmlParserFLAG_ULIST = 13
-	AgpmlParserFLAG_QUOTE = 14
-	AgpmlParserVARIABLE   = 15
-	AgpmlParserTEXT       = 16
-	AgpmlParserATRIBUTION = 17
-	AgpmlParserCOLOR      = 18
-	AgpmlParserNUMBER     = 19
-	AgpmlParserDIGIT      = 20
-	AgpmlParserCOMMENT    = 21
-	AgpmlParserWS         = 22
+	AgpmlParserEOF                 = antlr.TokenEOF
+	AgpmlParserT__0                = 1
+	AgpmlParserT__1                = 2
+	AgpmlParserT__2                = 3
+	AgpmlParserT__3                = 4
+	AgpmlParserT__4                = 5
+	AgpmlParserT__5                = 6
+	AgpmlParserTEXT_CONTENT        = 7
+	AgpmlParserSTRING              = 8
+	AgpmlParserDIVIDER             = 9
+	AgpmlParserFLAG_TITLE          = 10
+	AgpmlParserFLAG_OLIST          = 11
+	AgpmlParserFLAG_ULIST          = 12
+	AgpmlParserFLAG_QUOTE          = 13
+	AgpmlParserATTRIBUTE           = 14
+	AgpmlParserVARIABLE            = 15
+	AgpmlParserATRIBUTION          = 16
+	AgpmlParserDEFINER             = 17
+	AgpmlParserSEPARATOR           = 18
+	AgpmlParserCOLOR               = 19
+	AgpmlParserNUMBER              = 20
+	AgpmlParserDIGIT               = 21
+	AgpmlParserCOMMENT             = 22
+	AgpmlParserWS                  = 23
+	AgpmlParserOPEN_CURLY_BRACKET  = 24
+	AgpmlParserCLOSE_CURLY_BRACKET = 25
 )
 
 // AgpmlParser rules.
@@ -669,6 +674,8 @@ type IStyleContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
+	OPEN_CURLY_BRACKET() antlr.TerminalNode
+	CLOSE_CURLY_BRACKET() antlr.TerminalNode
 	StyleConfig() IStyleConfigContext
 
 	// IsStyleContext differentiates from other interfaces.
@@ -706,6 +713,14 @@ func NewStyleContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 }
 
 func (s *StyleContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *StyleContext) OPEN_CURLY_BRACKET() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserOPEN_CURLY_BRACKET, 0)
+}
+
+func (s *StyleContext) CLOSE_CURLY_BRACKET() antlr.TerminalNode {
+	return s.GetToken(AgpmlParserCLOSE_CURLY_BRACKET, 0)
+}
 
 func (s *StyleContext) StyleConfig() IStyleConfigContext {
 	var t antlr.RuleContext
@@ -761,7 +776,7 @@ func (p *AgpmlParser) Style() (localctx IStyleContext) {
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(34)
-		p.Match(AgpmlParserT__6)
+		p.Match(AgpmlParserOPEN_CURLY_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
@@ -783,7 +798,7 @@ func (p *AgpmlParser) Style() (localctx IStyleContext) {
 	}
 	{
 		p.SetState(38)
-		p.Match(AgpmlParserT__7)
+		p.Match(AgpmlParserCLOSE_CURLY_BRACKET)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
