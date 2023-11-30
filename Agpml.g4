@@ -101,10 +101,14 @@ CLOSE_ID
     : '##'
     ;
 
+PARAGRAPH
+    : ';'
+    ;
+
 // Parser rules
 
 program
-    : '.header' headerConfigs? ('.vars' varConfigs?)? '.body' dataConfigs? EOF
+    : '.header' headerConfigs? ('.vars' varConfigs?)? '.body' body? EOF
     ;
 
 headerConfigs
@@ -122,10 +126,14 @@ varConfigs
 varConfig
     : VARIABLE ATRIBUTION (BOOLEAN | STRING | NUMBER | COLOR | VARIABLE)
     ;
-
-dataConfigs
-    :
+body
+    : element+
     ;
+
+element
+    : (FLAG_OLIST | FLAG_ULIST | FLAG_QUOTE | FLAG_TITLE | PARAGRAPH)
+
+
 
 style
     : '{' styleConfig? '}'
