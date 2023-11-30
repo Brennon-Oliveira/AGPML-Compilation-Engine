@@ -1,25 +1,33 @@
-// Code generated from .//agpml.g4 by ANTLR 4.13.1. DO NOT EDIT.
+// Code generated from .//Agpml.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
-package parser // agpml
+package parser // Agpml
 
 import "github.com/antlr4-go/antlr/v4"
 
-type BaseagpmlVisitor struct {
+type BaseAgpmlVisitor struct {
 	*antlr.BaseParseTreeVisitor
 }
 
-func (v *BaseagpmlVisitor) VisitProgram(ctx *ProgramContext) interface{} {
+func (v *BaseAgpmlVisitor) VisitProgram(ctx *ProgramContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseagpmlVisitor) VisitHeaderConfigs(ctx *HeaderConfigsContext) interface{} {
+func (v *BaseAgpmlVisitor) VisitHeaderConfigs(ctx *HeaderConfigsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseagpmlVisitor) VisitVarConfigs(ctx *VarConfigsContext) interface{} {
+func (v *BaseAgpmlVisitor) VisitVarConfigs(ctx *VarConfigsContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseagpmlVisitor) VisitDataConfigs(ctx *DataConfigsContext) interface{} {
+func (v *BaseAgpmlVisitor) VisitDataConfigs(ctx *DataConfigsContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseAgpmlVisitor) VisitStyle(ctx *StyleContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseAgpmlVisitor) VisitStyleConfig(ctx *StyleConfigContext) interface{} {
 	return v.VisitChildren(ctx)
 }

@@ -17,19 +17,19 @@ $number = 123
 #[5] title 5
 #[6] title 6
 -
-#[1]{color:#ff0000} colorized title 1
+#[1]{color:#ff0000} $title
 #[2]{
     color:#00ff00,
     backgroundColor: #0000ff
-} colorized and background color title
+} "colorized and background color title
 #[2]{align: center} Center title
 -
-Common paragraph.
-Next part
+"Common paragraph.
+"Next part
 
-New paragraph.
+"New paragraph.
 
-{color:#114466} Colorized paragraph.
+{color:#114466} " Colorized paragraph.
 
 * Item in unordered list 1
 * Item in unordered list 2

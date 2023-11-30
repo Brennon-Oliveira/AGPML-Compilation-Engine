@@ -1,11 +1,11 @@
-// Code generated from .//agpml.g4 by ANTLR 4.13.1. DO NOT EDIT.
+// Code generated from .//Agpml.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
-package parser // agpml
+package parser // Agpml
 
 import "github.com/antlr4-go/antlr/v4"
 
-// agpmlListener is a complete listener for a parse tree produced by agpmlParser.
-type agpmlListener interface {
+// AgpmlListener is a complete listener for a parse tree produced by AgpmlParser.
+type AgpmlListener interface {
 	antlr.ParseTreeListener
 
 	// EnterProgram is called when entering the program production.
@@ -20,6 +20,12 @@ type agpmlListener interface {
 	// EnterDataConfigs is called when entering the dataConfigs production.
 	EnterDataConfigs(c *DataConfigsContext)
 
+	// EnterStyle is called when entering the style production.
+	EnterStyle(c *StyleContext)
+
+	// EnterStyleConfig is called when entering the styleConfig production.
+	EnterStyleConfig(c *StyleConfigContext)
+
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
@@ -31,4 +37,10 @@ type agpmlListener interface {
 
 	// ExitDataConfigs is called when exiting the dataConfigs production.
 	ExitDataConfigs(c *DataConfigsContext)
+
+	// ExitStyle is called when exiting the style production.
+	ExitStyle(c *StyleContext)
+
+	// ExitStyleConfig is called when exiting the styleConfig production.
+	ExitStyleConfig(c *StyleConfigContext)
 }
