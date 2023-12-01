@@ -28,7 +28,23 @@ func (v *BaseAgpmlVisitor) VisitVarConfig(ctx *VarConfigContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseAgpmlVisitor) VisitDataConfigs(ctx *DataConfigsContext) interface{} {
+func (v *BaseAgpmlVisitor) VisitBody(ctx *BodyContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseAgpmlVisitor) VisitIdGroup(ctx *IdGroupContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseAgpmlVisitor) VisitClassGroup(ctx *ClassGroupContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseAgpmlVisitor) VisitElement(ctx *ElementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseAgpmlVisitor) VisitLine(ctx *LineContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

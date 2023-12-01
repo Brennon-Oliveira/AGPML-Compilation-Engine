@@ -23,8 +23,20 @@ type AgpmlListener interface {
 	// EnterVarConfig is called when entering the varConfig production.
 	EnterVarConfig(c *VarConfigContext)
 
-	// EnterDataConfigs is called when entering the dataConfigs production.
-	EnterDataConfigs(c *DataConfigsContext)
+	// EnterBody is called when entering the body production.
+	EnterBody(c *BodyContext)
+
+	// EnterIdGroup is called when entering the idGroup production.
+	EnterIdGroup(c *IdGroupContext)
+
+	// EnterClassGroup is called when entering the classGroup production.
+	EnterClassGroup(c *ClassGroupContext)
+
+	// EnterElement is called when entering the element production.
+	EnterElement(c *ElementContext)
+
+	// EnterLine is called when entering the line production.
+	EnterLine(c *LineContext)
 
 	// EnterStyle is called when entering the style production.
 	EnterStyle(c *StyleContext)
@@ -47,8 +59,20 @@ type AgpmlListener interface {
 	// ExitVarConfig is called when exiting the varConfig production.
 	ExitVarConfig(c *VarConfigContext)
 
-	// ExitDataConfigs is called when exiting the dataConfigs production.
-	ExitDataConfigs(c *DataConfigsContext)
+	// ExitBody is called when exiting the body production.
+	ExitBody(c *BodyContext)
+
+	// ExitIdGroup is called when exiting the idGroup production.
+	ExitIdGroup(c *IdGroupContext)
+
+	// ExitClassGroup is called when exiting the classGroup production.
+	ExitClassGroup(c *ClassGroupContext)
+
+	// ExitElement is called when exiting the element production.
+	ExitElement(c *ElementContext)
+
+	// ExitLine is called when exiting the line production.
+	ExitLine(c *LineContext)
 
 	// ExitStyle is called when exiting the style production.
 	ExitStyle(c *StyleContext)

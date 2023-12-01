@@ -23,8 +23,20 @@ type AgpmlVisitor interface {
 	// Visit a parse tree produced by AgpmlParser#varConfig.
 	VisitVarConfig(ctx *VarConfigContext) interface{}
 
-	// Visit a parse tree produced by AgpmlParser#dataConfigs.
-	VisitDataConfigs(ctx *DataConfigsContext) interface{}
+	// Visit a parse tree produced by AgpmlParser#body.
+	VisitBody(ctx *BodyContext) interface{}
+
+	// Visit a parse tree produced by AgpmlParser#idGroup.
+	VisitIdGroup(ctx *IdGroupContext) interface{}
+
+	// Visit a parse tree produced by AgpmlParser#classGroup.
+	VisitClassGroup(ctx *ClassGroupContext) interface{}
+
+	// Visit a parse tree produced by AgpmlParser#element.
+	VisitElement(ctx *ElementContext) interface{}
+
+	// Visit a parse tree produced by AgpmlParser#line.
+	VisitLine(ctx *LineContext) interface{}
 
 	// Visit a parse tree produced by AgpmlParser#style.
 	VisitStyle(ctx *StyleContext) interface{}

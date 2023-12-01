@@ -51,11 +51,35 @@ func (s *BaseAgpmlListener) EnterVarConfig(ctx *VarConfigContext) {}
 // ExitVarConfig is called when production varConfig is exited.
 func (s *BaseAgpmlListener) ExitVarConfig(ctx *VarConfigContext) {}
 
-// EnterDataConfigs is called when production dataConfigs is entered.
-func (s *BaseAgpmlListener) EnterDataConfigs(ctx *DataConfigsContext) {}
+// EnterBody is called when production body is entered.
+func (s *BaseAgpmlListener) EnterBody(ctx *BodyContext) {}
 
-// ExitDataConfigs is called when production dataConfigs is exited.
-func (s *BaseAgpmlListener) ExitDataConfigs(ctx *DataConfigsContext) {}
+// ExitBody is called when production body is exited.
+func (s *BaseAgpmlListener) ExitBody(ctx *BodyContext) {}
+
+// EnterIdGroup is called when production idGroup is entered.
+func (s *BaseAgpmlListener) EnterIdGroup(ctx *IdGroupContext) {}
+
+// ExitIdGroup is called when production idGroup is exited.
+func (s *BaseAgpmlListener) ExitIdGroup(ctx *IdGroupContext) {}
+
+// EnterClassGroup is called when production classGroup is entered.
+func (s *BaseAgpmlListener) EnterClassGroup(ctx *ClassGroupContext) {}
+
+// ExitClassGroup is called when production classGroup is exited.
+func (s *BaseAgpmlListener) ExitClassGroup(ctx *ClassGroupContext) {}
+
+// EnterElement is called when production element is entered.
+func (s *BaseAgpmlListener) EnterElement(ctx *ElementContext) {}
+
+// ExitElement is called when production element is exited.
+func (s *BaseAgpmlListener) ExitElement(ctx *ElementContext) {}
+
+// EnterLine is called when production line is entered.
+func (s *BaseAgpmlListener) EnterLine(ctx *LineContext) {}
+
+// ExitLine is called when production line is exited.
+func (s *BaseAgpmlListener) ExitLine(ctx *LineContext) {}
 
 // EnterStyle is called when production style is entered.
 func (s *BaseAgpmlListener) EnterStyle(ctx *StyleContext) {}

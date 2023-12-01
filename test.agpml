@@ -25,7 +25,7 @@ $number = 123
     color:#00ff00,
     backgroundColor: #0000ff
 } ;colorized and background color title
-#[2]{align: center} ;Center title
+#[2]{align: "center"} ;Center title
 -
 ;Common paragraph.
 ;Next part

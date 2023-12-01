@@ -127,18 +127,30 @@ varConfig
     : VARIABLE ATRIBUTION (BOOLEAN | STRING | NUMBER | COLOR | VARIABLE)
     ;
 body
-    : element+
+    : (element | idGroup | classGroup)+
+    ;
+
+idGroup
+    : OPEN_ID (element)* CLOSE_ID
+    ;
+
+classGroup
+    : OPEN_CLASS (element)* CLOSE_CLASS
     ;
 
 element
-    : (FLAG_OLIST | FLAG_ULIST | FLAG_QUOTE | FLAG_TITLE | PARAGRAPH)
+    : DIVIDER
+    | line
+    ;
 
-
+line
+    : (FLAG_OLIST | FLAG_ULIST | FLAG_QUOTE | FLAG_TITLE | TEXT_CONTENT | style) style?  TEXT_CONTENT?
+    ;
 
 style
-    : '{' styleConfig? '}'
+    : OPEN_CURLY_BRACKET styleConfig+ CLOSE_CURLY_BRACKET
     ;
 
 styleConfig
-    : '1'
+    : ATTRIBUTE DEFINER (BOOLEAN | STRING | NUMBER | COLOR | VARIABLE) (',')?
     ;
