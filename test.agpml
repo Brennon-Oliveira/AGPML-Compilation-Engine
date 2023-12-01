@@ -1,13 +1,15 @@
 .header
 
 inlineCss = true
-title = "Title of the page"
+title = "123"
 
 .vars
 
 $title = "Title of the page"
 $blue = #0000ff
 $number = 123
+$repeatNumber = $number
+$error = "Error"
 
 .body
 // This is a comment

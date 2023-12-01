@@ -45,7 +45,7 @@ func agpmlParserInit() {
 		"OPEN_ID", "CLOSE_ID", "PARAGRAPH",
 	}
 	staticData.RuleNames = []string{
-		"program", "header_configs", "headerConfig", "varConfigs", "varConfig",
+		"program", "headerConfigs", "headerConfig", "varConfigs", "varConfig",
 		"body", "idGroup", "classGroup", "element", "line", "style", "styleConfig",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()

@@ -3,12 +3,10 @@
 package visitors // Agpml
 
 import (
-	"agpml/header_configs"
 	"agpml/parser"
 	"fmt"
 	"github.com/antlr4-go/antlr/v4"
 	"os"
-	"strings"
 )
 
 type BaseAgpmlVisitor struct {
@@ -17,7 +15,7 @@ type BaseAgpmlVisitor struct {
 
 func SemanticError(line int, message string) {
 	fmt.Printf("SemanticError on line %d: %s\n", line, message)
-	println(message)
+	os.Exit(0)
 }
 
 func Visit(ctx antlr.ParseTree) {
@@ -30,37 +28,10 @@ func (v *BaseAgpmlVisitor) VisitProgram(ctx *parser.ProgramContext) interface{} 
 	if ctx.HeaderConfigs() != nil {
 		v.VisitHeaderConfigs(ctx.HeaderConfigs().(*parser.HeaderConfigsContext))
 	}
+	if ctx.VarConfigs() != nil {
+		v.VisitVarConfigs(ctx.VarConfigs().(*parser.VarConfigsContext))
+	}
 	return nil
-}
-
-func (v *BaseAgpmlVisitor) VisitHeaderConfigs(ctx *parser.HeaderConfigsContext) interface{} {
-	println("VisitHeaderConfigs")
-	for _, child := range ctx.GetChildren() {
-		v.VisitHeaderConfig(child.(*parser.HeaderConfigContext))
-	}
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseAgpmlVisitor) VisitHeaderConfig(ctx *parser.HeaderConfigContext) interface{} {
-	println("VisitHeaderConfig")
-
-	attribute := strings.TrimSpace(ctx.ATTRIBUTE().GetText())
-	if !header_configs.IsAcceptedHeaderConfig(attribute) {
-		SemanticError(ctx.GetStart().GetLine(), "Invalid header config: "+attribute)
-		os.Exit(0)
-	}
-
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseAgpmlVisitor) VisitVarConfigs(ctx *parser.VarConfigsContext) interface{} {
-	println("VisitVarConfigs")
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseAgpmlVisitor) VisitVarConfig(ctx *parser.VarConfigContext) interface{} {
-	println("VisitVarConfig")
-	return v.VisitChildren(ctx)
 }
 
 func (v *BaseAgpmlVisitor) VisitBody(ctx *parser.BodyContext) interface{} {

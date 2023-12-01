@@ -27,10 +27,10 @@ func (s *BaseAgpmlListener) EnterProgram(ctx *ProgramContext) {}
 // ExitProgram is called when production program is exited.
 func (s *BaseAgpmlListener) ExitProgram(ctx *ProgramContext) {}
 
-// EnterHeaderConfigs is called when production header_configs is entered.
+// EnterHeaderConfigs is called when production headerConfigs is entered.
 func (s *BaseAgpmlListener) EnterHeaderConfigs(ctx *HeaderConfigsContext) {}
 
-// ExitHeaderConfigs is called when production header_configs is exited.
+// ExitHeaderConfigs is called when production headerConfigs is exited.
 func (s *BaseAgpmlListener) ExitHeaderConfigs(ctx *HeaderConfigsContext) {}
 
 // EnterHeaderConfig is called when production headerConfig is entered.
