@@ -1,3 +1,5 @@
 antlr4 -visitor -Dlanguage=Go .\Agpml.g4 -o .\parser
 ou
 java org.antlr.v4.Tool -Dlanguage=Go -visitor .\Agpml.g4 -o .\parser
+
+java org.antlr.v4.Tool -Dlanguage=Go .\Agpml.g4 -o .\parser

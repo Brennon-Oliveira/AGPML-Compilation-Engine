@@ -11,7 +11,7 @@ type AgpmlListener interface {
 	// EnterProgram is called when entering the program production.
 	EnterProgram(c *ProgramContext)
 
-	// EnterHeaderConfigs is called when entering the headerConfigs production.
+	// EnterHeaderConfigs is called when entering the header_configs production.
 	EnterHeaderConfigs(c *HeaderConfigsContext)
 
 	// EnterHeaderConfig is called when entering the headerConfig production.
@@ -47,7 +47,7 @@ type AgpmlListener interface {
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
 
-	// ExitHeaderConfigs is called when exiting the headerConfigs production.
+	// ExitHeaderConfigs is called when exiting the header_configs production.
 	ExitHeaderConfigs(c *HeaderConfigsContext)
 
 	// ExitHeaderConfig is called when exiting the headerConfig production.

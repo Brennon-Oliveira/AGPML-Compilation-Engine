@@ -116,7 +116,7 @@ headerConfigs
     ;
 
 headerConfig
-    : ATTRIBUTE ATRIBUTION (BOOLEAN | STRING | NUMBER | COLOR)
+    : ATTRIBUTE ATRIBUTION Value=(BOOLEAN | STRING | NUMBER | COLOR)
     ;
 
 varConfigs

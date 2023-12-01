@@ -2,6 +2,7 @@ package main
 
 import (
 	"agpml/parser"
+	"agpml/visitors"
 	"github.com/antlr4-go/antlr/v4"
 )
 
@@ -19,6 +20,7 @@ func main() {
 
 	commonTokenStream := antlr.NewCommonTokenStream(lexer, 0)
 	parserInstance := parser.NewAgpmlParser(commonTokenStream)
-	parserInstance.Program()
-
+	parserInstance.BuildParseTrees = true
+	tree := parserInstance.Program()
+	visitors.Visit(tree)
 }

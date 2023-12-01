@@ -45,7 +45,7 @@ func agpmlParserInit() {
 		"OPEN_ID", "CLOSE_ID", "PARAGRAPH",
 	}
 	staticData.RuleNames = []string{
-		"program", "headerConfigs", "headerConfig", "varConfigs", "varConfig",
+		"program", "header_configs", "headerConfig", "varConfigs", "varConfig",
 		"body", "idGroup", "classGroup", "element", "line", "style", "styleConfig",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
@@ -305,16 +305,6 @@ func (s *ProgramContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-func (s *ProgramContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitProgram(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
 func (p *AgpmlParser) Program() (localctx IProgramContext) {
 	localctx = NewProgramContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 0, AgpmlParserRULE_program)
@@ -527,16 +517,6 @@ func (s *HeaderConfigsContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-func (s *HeaderConfigsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitHeaderConfigs(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
 func (p *AgpmlParser) HeaderConfigs() (localctx IHeaderConfigsContext) {
 	localctx = NewHeaderConfigsContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 2, AgpmlParserRULE_headerConfigs)
@@ -584,6 +564,12 @@ type IHeaderConfigContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// GetValue returns the Value token.
+	GetValue() antlr.Token
+
+	// SetValue sets the Value token.
+	SetValue(antlr.Token)
+
 	// Getter signatures
 	ATTRIBUTE() antlr.TerminalNode
 	ATRIBUTION() antlr.TerminalNode
@@ -599,6 +585,7 @@ type IHeaderConfigContext interface {
 type HeaderConfigContext struct {
 	antlr.BaseParserRuleContext
 	parser antlr.Parser
+	Value  antlr.Token
 }
 
 func NewEmptyHeaderConfigContext() *HeaderConfigContext {
@@ -627,6 +614,10 @@ func NewHeaderConfigContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 }
 
 func (s *HeaderConfigContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *HeaderConfigContext) GetValue() antlr.Token { return s.Value }
+
+func (s *HeaderConfigContext) SetValue(v antlr.Token) { s.Value = v }
 
 func (s *HeaderConfigContext) ATTRIBUTE() antlr.TerminalNode {
 	return s.GetToken(AgpmlParserATTRIBUTE, 0)
@@ -672,16 +663,6 @@ func (s *HeaderConfigContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-func (s *HeaderConfigContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitHeaderConfig(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
 func (p *AgpmlParser) HeaderConfig() (localctx IHeaderConfigContext) {
 	localctx = NewHeaderConfigContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 4, AgpmlParserRULE_headerConfig)
@@ -706,10 +687,17 @@ func (p *AgpmlParser) HeaderConfig() (localctx IHeaderConfigContext) {
 	}
 	{
 		p.SetState(47)
+
+		var _lt = p.GetTokenStream().LT(1)
+
+		localctx.(*HeaderConfigContext).Value = _lt
+
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&393296) != 0) {
-			p.GetErrorHandler().RecoverInline(p)
+			var _ri = p.GetErrorHandler().RecoverInline(p)
+
+			localctx.(*HeaderConfigContext).Value = _ri
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
 			p.Consume()
@@ -834,16 +822,6 @@ func (s *VarConfigsContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *VarConfigsContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(AgpmlListener); ok {
 		listenerT.ExitVarConfigs(s)
-	}
-}
-
-func (s *VarConfigsContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitVarConfigs(s)
-
-	default:
-		return t.VisitChildren(s)
 	}
 }
 
@@ -984,16 +962,6 @@ func (s *VarConfigContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *VarConfigContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(AgpmlListener); ok {
 		listenerT.ExitVarConfig(s)
-	}
-}
-
-func (s *VarConfigContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitVarConfig(s)
-
-	default:
-		return t.VisitChildren(s)
 	}
 }
 
@@ -1238,16 +1206,6 @@ func (s *BodyContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-func (s *BodyContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitBody(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
 func (p *AgpmlParser) Body() (localctx IBodyContext) {
 	localctx = NewBodyContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 10, AgpmlParserRULE_body)
@@ -1431,16 +1389,6 @@ func (s *IdGroupContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-func (s *IdGroupContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitIdGroup(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
 func (p *AgpmlParser) IdGroup() (localctx IIdGroupContext) {
 	localctx = NewIdGroupContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 12, AgpmlParserRULE_idGroup)
@@ -1615,16 +1563,6 @@ func (s *ClassGroupContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-func (s *ClassGroupContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitClassGroup(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
 func (p *AgpmlParser) ClassGroup() (localctx IClassGroupContext) {
 	localctx = NewClassGroupContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 14, AgpmlParserRULE_classGroup)
@@ -1765,16 +1703,6 @@ func (s *ElementContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *ElementContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(AgpmlListener); ok {
 		listenerT.ExitElement(s)
-	}
-}
-
-func (s *ElementContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitElement(s)
-
-	default:
-		return t.VisitChildren(s)
 	}
 }
 
@@ -1959,16 +1887,6 @@ func (s *LineContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *LineContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(AgpmlListener); ok {
 		listenerT.ExitLine(s)
-	}
-}
-
-func (s *LineContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitLine(s)
-
-	default:
-		return t.VisitChildren(s)
 	}
 }
 
@@ -2203,16 +2121,6 @@ func (s *StyleContext) ExitRule(listener antlr.ParseTreeListener) {
 	}
 }
 
-func (s *StyleContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitStyle(s)
-
-	default:
-		return t.VisitChildren(s)
-	}
-}
-
 func (p *AgpmlParser) Style() (localctx IStyleContext) {
 	localctx = NewStyleContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 20, AgpmlParserRULE_style)
@@ -2371,16 +2279,6 @@ func (s *StyleConfigContext) EnterRule(listener antlr.ParseTreeListener) {
 func (s *StyleConfigContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(AgpmlListener); ok {
 		listenerT.ExitStyleConfig(s)
-	}
-}
-
-func (s *StyleConfigContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
-	switch t := visitor.(type) {
-	case AgpmlVisitor:
-		return t.VisitStyleConfig(s)
-
-	default:
-		return t.VisitChildren(s)
 	}
 }
 

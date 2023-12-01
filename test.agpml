@@ -1,6 +1,7 @@
 .header
 
 inlineCss = true
+title = "Title of the page"
 
 .vars
 
